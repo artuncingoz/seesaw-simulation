@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+#seesaw-container {
+    text-align: center;
+    background-color: rgb(115, 185, 185);
+    border-radius: 18px;
+    padding: 40px 80px;
+}
