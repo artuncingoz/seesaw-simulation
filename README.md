@@ -4,7 +4,7 @@ This is a seesaw simulation for represent the seesaw in html, css and js.
 
 I used Javascript, CSS and HTML for creating this seesaw project
 
-## What have ı done :)
+## What have I done :)
 
 At the very beginning of the question, I first created the structure. I took each seesaw element apart and saw how many parts it consisted of.
 
@@ -17,6 +17,8 @@ Then I added the total torque and the direction of the torque. I also added a te
 And added some sound effect for droping weights and clicking the buttons.
 
 Added  pause button and add pause flag for check game is paused or not into js file.
+
+Added Notification panel to the right of the page and see weights positions and informations
 
 ## The Bugs And Solutions
 
