@@ -6,7 +6,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 
@@ -40,10 +39,13 @@ body {
 }
 
 #seesaw {
+    background-color: #cac9c9;
     position: relative;
-    width: 400px;
+    width: 600px;
     height: 200px;
     margin-top: 50px;
+    border-radius: 30px;
+    padding: 60px;
 }
 
 #plank {
@@ -54,6 +56,8 @@ body {
     left: 50%;
     background-color: #8B4513;
     transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.5s ease;
 }
 
 #pivot {
@@ -64,7 +68,6 @@ body {
     border-bottom: 60px solid #383737;
     bottom: 0;
     transform: translateX(-50%);
-    z-index: -1;
 }
 
 
@@ -72,11 +75,13 @@ body {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: #FF5733;
+    background-color: #485bca;
     border-radius: 50%;
     text-align: center;
     line-height: 40px;
     color: white;
     font-weight: bold;
 
+    transform: translateX(-50%);
+    bottom: 20px;
 }
