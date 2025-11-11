@@ -10,10 +10,12 @@ const pasueButton = document.getElementById('pause-button');
 
 let objects = [];
 let nextWeightValues = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
+let isPause = false;
 
 let sound = new Audio("ball_drop.mp3");
 let clickSound = new Audio("click.mp3");
 
+// Update seesaw based on weights and their positions
 function updateSeesaw() {
     let leftWeight = 0;
     let rightWeight = 0;
@@ -38,6 +40,10 @@ function updateSeesaw() {
 
     torqdiff_display.textContent = torqdiff;
 
+    if (isPause) {
+        return;
+    }
+
     if (Math.abs(torqdiff * 0.005) > 30) {
         plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 30 : -30}deg)`;
         return;
@@ -46,7 +52,7 @@ function updateSeesaw() {
     plank.style.transform = `translateX(-50%) rotate(${torqdiff * 0.005}deg)`;
 }
 
-
+// Create and display a weight element on the plank
 function createWeightElement(weightObject) {
     const weightElement = document.createElement('div');
     weightElement.className = 'weight';
@@ -84,6 +90,11 @@ function addWeight(event) {
 }
 
 function resetWeights() {
+
+    isPause = false;
+    pasueButton.classList.remove('paused');
+    pasueButton.textContent = 'Pause';
+
     objects = [];
     plank.innerHTML = '';
 
@@ -94,8 +105,21 @@ function resetWeights() {
 }
 
 function pauseGame() {
+
+    isPause = !isPause;
+
     clickSound.play();
     clickSound.currentTime = 0;
+
+    if (isPause) {
+        pasueButton.classList.add('paused');
+        pasueButton.textContent = 'Resume';
+    } else {
+        pasueButton.classList.remove('paused');
+        pasueButton.textContent = 'Pause';
+    }
+
+    updateSeesaw();
 }
 
 

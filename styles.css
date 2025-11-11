@@ -44,15 +44,18 @@ body {
     font-size: 32px;
     cursor: pointer;
     border: none;
+    width: 150px;
     border-radius: 10px;
-    background-color: #008CBA;
+    background-color: #16af62;
     color: white;
     margin-bottom: 20px;
     margin-top: 30px;
 }
 
-#pause-button:hover {
-    background-color: #007bb5;
+
+
+#pause-button.paused {
+    background-color: #a32c24;
 }
 
 #reset-button {
@@ -61,18 +64,17 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 10px;
-    background-color: #4CAF50;
+    background-color: #6c62cc;
     color: white;
     margin-bottom: 20px;
     margin-top: 30px;
 }
 
 #reset-button:hover {
-    background-color: #45a049;
+    background-color: #574bb8;
 }
 
 #seesaw {
-    background-color: #cac9c9;
     position: relative;
     width: 600px;
     height: 200px;
