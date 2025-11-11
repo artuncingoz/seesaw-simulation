@@ -18,6 +18,12 @@ And added some sound effect for droping weights and clicking the buttons.
 
 Added  pause button and add pause flag for check game is paused or not into js file.
 
+Added local state storage function to store datas even the page reload
+
+Added seesaw info text above seesaw
+
+And fixed seesaw rotation movement
+
 ## The Fixes And Solutions
 
 Some of the errors I encountered were:

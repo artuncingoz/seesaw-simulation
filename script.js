@@ -8,6 +8,7 @@ const next_weight = document.getElementById('next_weight');
 const torqdiff_display = document.getElementById('tork_diff');
 const pasueButton = document.getElementById('pause-button');
 const notifCont = document.getElementById('notification-container');
+const seesawInfo = document.getElementById('seesaw_info');
 
 let objects = [];
 let notifList = [];
@@ -20,6 +21,49 @@ let isPause = false;
 let sound = new Audio("ball_drop.mp3");
 let clickSound = new Audio("click.mp3");
 
+
+function saveGameState() {
+    const gameState = {
+        objects: objects,
+        notifList: notifList,
+        notifListLength: notifListLength,
+        nextWeightValues: nextWeightValues,
+    };
+
+    localStorage.setItem('seesawGameState', JSON.stringify(gameState));
+}
+
+function loadGameState() {
+
+    const savedState = localStorage.getItem('seesawGameState');
+
+    if (savedState) {
+        const gameState = JSON.parse(savedState);
+        objects = gameState.objects || [];
+        notifList = gameState.notifList || [];
+        notifListLength = gameState.notifListLength || 1;
+        nextWeightValues = gameState.nextWeightValues || [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
+
+        // Recreate weight elements on the plank
+        objects.forEach(obj => {
+            createWeightElement(obj);
+        });
+
+        // Update notifications
+        notifCont.innerHTML = '';
+        for (let i = 0; i < notifList.length; i++) {
+            const notifelemeent = document.createElement('div');
+            notifelemeent.className = 'notif_element';
+            notifelemeent.textContent = notifList[i];
+            notifCont.appendChild(notifelemeent);
+        }
+        next_weight.textContent = nextWeightValues[0];
+
+        updateSeesaw();
+    }
+}
+
+
 // Update seesaw based on weights and their positions
 function updateSeesaw() {
     let leftWeight = 0;
@@ -27,6 +71,8 @@ function updateSeesaw() {
     let leftTorque = 0;
     let rightTorque = 0;
     const plankCenter = plank.clientWidth / 2;
+
+    seesawInfo.textContent = `Plank Width: ${plankWidth}m | Weights on Plank: ${objects.length}`;
 
     objects.forEach(obj => {
         if (obj.position < plankCenter) {
@@ -49,13 +95,13 @@ function updateSeesaw() {
         return;
     }
 
-    if (Math.abs(torqdiff * 0.005) > 30) {
-        plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 30 : -30}deg)`;
+    if (torqdiff === 0) {
+        plank.style.transform = `translateX(-50%)`;
         return;
     }
 
-
-    plank.style.transform = `translateX(-50%) rotate(${torqdiff * 0.005}deg)`;
+    plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 30 : -30}deg)`;
+    saveGameState();
 }
 
 // Create and display a weight element on the plank
@@ -99,7 +145,7 @@ function addWeight(event) {
         side = 'right';
     }
 
-    notifList.push(`${notifListLength}. Added weight: ${newWeight} at position: ${Math.abs(clickPosition - plankWidth / 2)} px away from center on ${side} side.`);
+    notifList.push(`${notifListLength}. Added weight: ${newWeight} at position: ${Math.abs(clickPosition - plankWidth / 2)} m away from center on ${side} side.`);
     if (notifList.length > 5) {
         notifList.shift();
     }
@@ -163,6 +209,7 @@ function init() {
     pasueButton.addEventListener('click', pauseGame);
 
     next_weight.textContent = nextWeightValues[0];
+    loadGameState();
 }
 
 
