@@ -18,7 +18,7 @@ And added some sound effect for droping weights and clicking the buttons.
 
 Added  pause button and add pause flag for check game is paused or not into js file.
 
-## The Fixes And Solutions
+## The Bugs And Solutions
 
 Some of the errors I encountered were:
 
