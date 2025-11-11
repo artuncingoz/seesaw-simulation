@@ -34,8 +34,8 @@ function updateSeesaw() {
 
     torqdiff_display.textContent = torqdiff;
 
-    if (Math.abs(torqdiff * 0.005) > 20) {
-        plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 20 : -20}deg)`;
+    if (Math.abs(torqdiff * 0.005) > 30) {
+        plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 30 : -30}deg)`;
         return;
     }
 

@@ -84,4 +84,6 @@ body {
 
     transform: translateX(-50%);
     bottom: 20px;
+
+    pointer-events: none;
 }
