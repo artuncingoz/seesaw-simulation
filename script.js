@@ -7,8 +7,13 @@ const resetButton = document.getElementById('reset-button');
 const next_weight = document.getElementById('next_weight');
 const torqdiff_display = document.getElementById('tork_diff');
 const pasueButton = document.getElementById('pause-button');
+const notifCont = document.getElementById('notification-container');
 
 let objects = [];
+let notifList = [];
+let notifListLength = 1;
+let plankWidth = plank.clientWidth;
+
 let nextWeightValues = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
 let isPause = false;
 
@@ -49,6 +54,7 @@ function updateSeesaw() {
         return;
     }
 
+
     plank.style.transform = `translateX(-50%) rotate(${torqdiff * 0.005}deg)`;
 }
 
@@ -85,6 +91,29 @@ function addWeight(event) {
 
     sound.play();
     sound.currentTime = 0;
+    let side = '';
+
+    if (clickPosition - plankWidth / 2 < 0) {
+        side = 'left';
+    } else {
+        side = 'right';
+    }
+
+    notifList.push(`${notifListLength}. Added weight: ${newWeight} at position: ${Math.abs(clickPosition - plankWidth / 2)} px away from center on ${side} side.`);
+    if (notifList.length > 5) {
+        notifList.shift();
+    }
+    notifListLength += 1;
+
+    notifCont.innerHTML = '';
+    for (let i = 0; i < notifList.length; i++) {
+        const notifelemeent = document.createElement('div');
+        notifelemeent.className = 'notif_element';
+
+        notifelemeent.textContent = notifList[i];
+
+        notifCont.appendChild(notifelemeent);
+    }
 
     updateSeesaw();
 }
@@ -97,6 +126,11 @@ function resetWeights() {
 
     objects = [];
     plank.innerHTML = '';
+
+    notifList = [];
+    notifListLength = 1;
+    notifCont.innerHTML = '';
+
 
     clickSound.play();
     clickSound.currentTime = 0;
