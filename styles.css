@@ -14,6 +14,7 @@ body {
     background-color: #ffffff;
     border-radius: 18px;
     padding: 40px 80px;
+    width: 800px;
 }
 
 #control-panel {
@@ -21,17 +22,49 @@ body {
     background-color: #d4d6d4;
     padding: 20px;
     border-radius: 10px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.next_weight {
+    color: #da5c40;
+    font-weight: bold;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+#pause-button {
+    padding: 10px 20px;
+    font-size: 32px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #008CBA;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+#pause-button:hover {
+    background-color: #007bb5;
 }
 
 #reset-button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 32px;
     cursor: pointer;
     border: none;
     border-radius: 10px;
     background-color: #4CAF50;
     color: white;
     margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 #reset-button:hover {
@@ -52,12 +85,12 @@ body {
     position: absolute;
     bottom: 60px;
     width: 400px;
-    height: 20px;
+    height: 30px;
     left: 50%;
     background-color: #8B4513;
     transform: translateX(-50%);
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 2s ease;
 }
 
 #pivot {
@@ -75,15 +108,16 @@ body {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: #485bca;
+    background-color: #ca7848;
     border-radius: 50%;
     text-align: center;
     line-height: 40px;
     color: white;
     font-weight: bold;
+    font-size: 21px;
 
     transform: translateX(-50%);
-    bottom: 20px;
+    bottom: 30px;
 
     pointer-events: none;
 }

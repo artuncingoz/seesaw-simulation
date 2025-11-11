@@ -6,9 +6,13 @@ const rightWeightDisplay = document.getElementById('right_weight');
 const resetButton = document.getElementById('reset-button');
 const next_weight = document.getElementById('next_weight');
 const torqdiff_display = document.getElementById('tork_diff');
+const pasueButton = document.getElementById('pause-button');
 
 let objects = [];
 let nextWeightValues = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
+
+let sound = new Audio("ball_drop.mp3");
+let clickSound = new Audio("click.mp3");
 
 function updateSeesaw() {
     let leftWeight = 0;
@@ -73,18 +77,33 @@ function addWeight(event) {
 
     createWeightElement(newWeightObject);
 
+    sound.play();
+    sound.currentTime = 0;
+
     updateSeesaw();
 }
 
 function resetWeights() {
     objects = [];
     plank.innerHTML = '';
+
+    clickSound.play();
+    clickSound.currentTime = 0;
+
     updateSeesaw();
 }
+
+function pauseGame() {
+    clickSound.play();
+    clickSound.currentTime = 0;
+}
+
 
 function init() {
     resetButton.addEventListener('click', resetWeights);
     plank.addEventListener('click', addWeight);
+    pasueButton.addEventListener('click', pauseGame);
+
     next_weight.textContent = nextWeightValues[0];
 }
 
