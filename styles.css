@@ -52,7 +52,22 @@ body {
     margin-top: 30px;
 }
 
+#notification-container {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+    max-height: 200px;
+}
 
+.notif_element {
+    margin-bottom: 8px;
+    padding: 6px;
+    background-color: #e0aaaa;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
 
 #pause-button.paused {
     background-color: #a32c24;
@@ -78,7 +93,6 @@ body {
     position: relative;
     width: 600px;
     height: 200px;
-    margin-top: 50px;
     border-radius: 30px;
     padding: 60px;
 }
