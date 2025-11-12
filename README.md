@@ -26,7 +26,7 @@ Added Notification panel to the right of the page and see weights positions and 
 
 ## The Bugs And Solutions
 
-    Some of the errors I encountered were:
+Some of the errors I encountered were:
 
 1. The pivot wasn't showing as a triangle.
 
