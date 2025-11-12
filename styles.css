@@ -132,12 +132,12 @@ body {
 
 .weight {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: #ca7848;
     border-radius: 50%;
     text-align: center;
-    line-height: 40px;
+    line-height: 30px;
     color: white;
     font-weight: bold;
     font-size: 21px;

@@ -10,18 +10,24 @@ const pasueButton = document.getElementById('pause-button');
 const notifCont = document.getElementById('notification-container');
 const seesawInfo = document.getElementById('seesaw_info');
 
+// List of Weight objects on the plank
 let objects = [];
+
+// Notification list
 let notifList = [];
+
 let notifListLength = 1;
 let plankWidth = plank.clientWidth;
 
 let nextWeightValues = [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
 let isPause = false;
 
+// Load sound effects
 let sound = new Audio("ball_drop.mp3");
 let clickSound = new Audio("click.mp3");
 
 
+// Save game state to localStorage
 function saveGameState() {
     const gameState = {
         objects: objects,
@@ -34,6 +40,7 @@ function saveGameState() {
     localStorage.setItem('seesawGameState', JSON.stringify(gameState));
 }
 
+// Load game state from localStorage
 function loadGameState() {
 
     const savedState = localStorage.getItem('seesawGameState');
@@ -123,12 +130,17 @@ function createWeightElement(weightObject) {
 
     weightElement.style.left = `${weightObject.position}px`;
 
+
+    weightElement.style.width = weightObject.weight + 30 + 'px';
+    weightElement.style.height = weightObject.weight + 30 + 'px';
+    weightElement.style.lineHeight = weightObject.weight + 30 + 'px';
+
     weightElement.textContent = weightObject.weight;
 
     plank.appendChild(weightElement);
 }
 
-
+//Add weight to the plank at clicked position
 function addWeight(event) {
 
     const clickPosition = event.offsetX;
@@ -176,6 +188,7 @@ function addWeight(event) {
     updateSeesaw();
 }
 
+// Reset the game state
 function resetWeights() {
 
     isPause = false;
@@ -193,9 +206,13 @@ function resetWeights() {
     clickSound.play();
     clickSound.currentTime = 0;
 
+    // Clear saved game state
+    localStorage.removeItem('seesawGameState');
+
     updateSeesaw();
 }
 
+// Pause or resume the game state
 function pauseGame() {
 
     isPause = !isPause;
@@ -214,7 +231,7 @@ function pauseGame() {
     updateSeesaw();
 }
 
-
+// Initialize event listeners and load game state
 function init() {
     resetButton.addEventListener('click', resetWeights);
     plank.addEventListener('click', addWeight);
@@ -224,5 +241,5 @@ function init() {
     loadGameState();
 }
 
-
+// Start the application
 init();
