@@ -18,6 +18,10 @@ And added some sound effect for droping weights and clicking the buttons.
 
 Added  pause button and add pause flag for check game is paused or not into js file.
 
+Added local state storage function to store datas even the page reload
+
+Added seesaw info text above seesaw
+
 Added Notification panel to the right of the page and see weights positions and informations
 
 ## The Bugs And Solutions

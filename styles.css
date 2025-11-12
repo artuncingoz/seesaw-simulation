@@ -14,7 +14,7 @@ body {
     background-color: #ffffff;
     border-radius: 18px;
     padding: 40px 80px;
-    width: 800px;
+    width: 1000px;
 }
 
 #control-panel {
@@ -97,6 +97,16 @@ body {
     padding: 60px;
 }
 
+#seesaw_info {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
 #plank {
     position: absolute;
     bottom: 60px;
@@ -106,7 +116,7 @@ body {
     background-color: #8B4513;
     transform: translateX(-50%);
     cursor: pointer;
-    transition: transform 2s ease;
+    transition: transform 3s ease;
 }
 
 #pivot {
