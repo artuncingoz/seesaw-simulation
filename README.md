@@ -24,6 +24,8 @@ Added seesaw info text above seesaw to tell the user plank width and hwo many we
 
 Added Notification panel to the right of the page and see weights positions and informations
 
+Added visual improvement to the weights circles to show the difference between different weights
+
 ## The Bugs And Solutions
 
 Some of the errors I encountered were:
