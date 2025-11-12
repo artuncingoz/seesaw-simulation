@@ -123,6 +123,11 @@ function createWeightElement(weightObject) {
 
     weightElement.style.left = `${weightObject.position}px`;
 
+
+    weightElement.style.width = weightObject.weight + 30 + 'px';
+    weightElement.style.height = weightObject.weight + 30 + 'px';
+    weightElement.style.lineHeight = weightObject.weight + 30 + 'px';
+
     weightElement.textContent = weightObject.weight;
 
     plank.appendChild(weightElement);

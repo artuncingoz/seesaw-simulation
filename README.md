@@ -39,3 +39,7 @@ I added padding to the balls, based on the board's base height and moved the wei
 3. Weights only added when ı clicked on the board should have add the weight, but clicking on the weights added a weight in the opposite position.
 
 To resolve this, I disabled clicking on the balls with the cursor.
+
+4. When the game paused and then added weights, and reload the page the loading state does not work properly
+
+To resolve this ı added pause variable into savestate and change the savestate function position in updatesaw function
