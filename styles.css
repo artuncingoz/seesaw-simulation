@@ -116,7 +116,7 @@ body {
     background-color: #8B4513;
     transform: translateX(-50%);
     cursor: pointer;
-    transition: transform 2s ease;
+    transition: transform 3s ease;
 }
 
 #pivot {

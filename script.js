@@ -28,6 +28,7 @@ function saveGameState() {
         notifList: notifList,
         notifListLength: notifListLength,
         nextWeightValues: nextWeightValues,
+        isPause: isPause
     };
 
     localStorage.setItem('seesawGameState', JSON.stringify(gameState));
@@ -43,6 +44,15 @@ function loadGameState() {
         notifList = gameState.notifList || [];
         notifListLength = gameState.notifListLength || 1;
         nextWeightValues = gameState.nextWeightValues || [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
+        isPause = gameState.isPause || false;
+
+        if (isPause) {
+            pasueButton.classList.add('paused');
+            pasueButton.textContent = 'Resume';
+        } else {
+            pasueButton.classList.remove('paused');
+            pasueButton.textContent = 'Pause';
+        }
 
         // Recreate weight elements on the plank
         objects.forEach(obj => {
@@ -91,6 +101,8 @@ function updateSeesaw() {
 
     torqdiff_display.textContent = torqdiff;
 
+    saveGameState();
+
     if (isPause) {
         return;
     }
@@ -101,7 +113,7 @@ function updateSeesaw() {
     }
 
     plank.style.transform = `translateX(-50%) rotate(${torqdiff > 0 ? 30 : -30}deg)`;
-    saveGameState();
+
 }
 
 // Create and display a weight element on the plank
